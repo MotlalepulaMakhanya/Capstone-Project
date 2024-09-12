@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
             margin: 0;
             padding: 0;
         }
+
         header {
             background-color: #219ebc;
             color: white;
@@ -19,10 +21,12 @@
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         header h1 {
             margin: 0;
             font-size: 24px;
         }
+
         #main-container {
             display: flex;
             justify-content: center;
@@ -30,6 +34,7 @@
             max-width: 1200px;
             width: 100%;
         }
+
         #discussion-threads {
             background-color: white;
             border-radius: 8px;
@@ -39,43 +44,62 @@
             max-width: 600px;
             margin: 10px;
         }
+
+        #user-list {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+        }
+
         h2 {
             font-size: 20px;
             margin-bottom: 15px;
             color: #023047;
         }
+
         .post {
             border-bottom: 1px solid #ddd;
             padding: 15px 0;
         }
+
         .post:last-child {
             border-bottom: none;
         }
+
         .post-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
+
         .post-header h3 {
             margin: 0;
             font-size: 18px;
             color: #023047;
         }
+
         .post-header span {
             font-size: 14px;
             color: #888;
         }
+
         .post-content {
             margin-top: 10px;
             font-size: 16px;
             line-height: 1.5;
         }
+
         .post-actions {
             margin-top: 10px;
             display: flex;
             align-items: center;
             gap: 20px;
         }
+
         .post-actions button {
             background-color: #219ebc;
             color: white;
@@ -88,23 +112,27 @@
             align-items: center;
             gap: 5px;
         }
+
         .post-actions button:hover {
             background-color: #0277bd;
         }
+
         .post-actions input[type="text"] {
             width: calc(100% - 120px);
             padding: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 14px;
-            display: none; /* Hide the comment input field initially */
+            display: none;
         }
+
         .reply-section {
             margin-top: 5px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         .reply-section button {
             background-color: #8ecae6;
             color: white;
@@ -114,15 +142,18 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .reply-section button:hover {
             background-color: #219ebc;
         }
+
         #new-post {
             margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
+
         #new-post textarea {
             width: 100%;
             padding: 10px;
@@ -132,6 +163,7 @@
             resize: vertical;
             min-height: 100px;
         }
+
         #new-post button {
             align-self: flex-end;
             background-color: #219ebc;
@@ -142,9 +174,26 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
         #new-post button:hover {
             background-color: #0277bd;
         }
+
+        #user-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #user-list ul li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        #user-list ul li:last-child {
+            border-bottom: none;
+        }
+
         @media (max-width: 768px) {
             #main-container {
                 flex-direction: column;
@@ -153,6 +202,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Community Forum</h1>
@@ -162,73 +212,116 @@
         <section id="discussion-threads">
             <h2>New Post</h2>
             <div id="new-post">
-                <textarea placeholder="What's on your mind?"></textarea>
-                <button>Post</button>
+                <textarea id="new-post-textarea" placeholder="What's on your mind?"></textarea>
+                <button id="post-button">Post</button>
             </div>
 
             <h2>Recent Posts</h2>
 
-            <div class="post">
-                <div class="post-header">
-                    <h3>User123</h3>
-                    <span>2 hours ago</span>
-                </div>
-                <div class="post-content">
-                    Dementia care requires patience and understanding. What are some strategies you use to manage daily challenges?
-                </div>
-                <div class="post-actions">
-                    <button class="like-button">Like</button>
-                    <input type="text" placeholder="Comment...">
-                    <div class="reply-section">
-                        <button class="reply-button">Reply</button>
-                    </div>
-                </div>
+            <div id="posts-container">
+                <!-- Posts will be dynamically inserted here -->
             </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <h3>Caregiver</h3>
-                    <span>4 hours ago</span>
-                </div>
-                <div class="post-content">
-                    I found that keeping a daily routine helps both me and my loved one stay on track. Consistency is key.
-                </div>
-                <div class="post-actions">
-                    <button class="like-button">Like</button>
-                    <input type="text" placeholder="Comment...">
-                    <div class="reply-section">
-                        <button class="reply-button">Reply</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <h3>FamilySupport</h3>
-                    <span>Yesterday</span>
-                </div>
-                <div class="post-content">
-                    Nutrition plays such a vital role in brain health. Does anyone have good recipes for a brain-healthy diet?
-                </div>
-                <div class="post-actions">
-                    <button class="like-button">Like</button>
-                    <input type="text" placeholder="Comment...">
-                    <div class="reply-section">
-                        <button class="reply-button">Reply</button>
-                    </div>
-                </div>
-            </div>
-            
         </section>
+
+        <aside id="user-list">
+            <h2>Registered Users</h2>
+            <ul id="user-list-container">
+                <!-- User list will be dynamically inserted here -->
+            </ul>
+        </aside>
     </div>
 
     <script>
-        document.querySelectorAll('.reply-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const commentInput = this.closest('.post-actions').querySelector('input[type="text"]');
-                commentInput.style.display = commentInput.style.display === 'none' ? 'block' : 'none';
+        const postsContainer = document.getElementById('posts-container');
+        const postButton = document.getElementById('post-button');
+        const newPostTextarea = document.getElementById('new-post-textarea');
+        const userListContainer = document.getElementById('user-list-container');
+
+        // Example posts data
+        let posts = [
+            { id: 1, user: 'User123', time: '2 hours ago', content: 'Dementia care requires patience and understanding. What are some strategies you use to manage daily challenges?', likes: 0, comments: [] },
+            { id: 2, user: 'Caregiver', time: '4 hours ago', content: 'I found that keeping a daily routine helps both me and my loved one stay on track. Consistency is key.', likes: 0, comments: [] },
+            { id: 3, user: 'FamilySupport', time: 'Yesterday', content: 'Nutrition plays such a vital role in brain health. Does anyone have good recipes for a brain-healthy diet?', likes: 0, comments: [] }
+        ];
+
+        // Example users data
+        let users = ['User123', 'Caregiver', 'FamilySupport', 'NewUser1', 'NewUser2'];
+
+        function renderPosts() {
+            postsContainer.innerHTML = '';
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('post');
+                postElement.innerHTML = `
+                    <div class="post-header">
+                        <h3>${post.user}</h3>
+                        <span>${post.time}</span>
+                    </div>
+                    <div class="post-content">
+                        ${post.content}
+                    </div>
+                    <div class="post-actions">
+                        <button class="like-button">Like (${post.likes})</button>
+                        <input type="text" placeholder="Comment...">
+                        <div class="reply-section">
+                            <button class="reply-button">Reply</button>
+                        </div>
+                    </div>
+                `;
+                postsContainer.appendChild(postElement);
             });
+
+            document.querySelectorAll('.like-button').forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    posts[index].likes++;
+                    renderPosts();
+                });
+            });
+
+            document.querySelectorAll('.reply-button').forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    const commentInput = button.closest('.post-actions').querySelector('input[type="text"]');
+                    commentInput.style.display = commentInput.style.display === 'none' ? 'block' : 'none';
+
+                    commentInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter' && commentInput.value.trim()) {
+                            posts[index].comments.push(commentInput.value.trim());
+                            commentInput.value = '';
+                            renderPosts();
+                        }
+                    });
+                });
+            });
+        }
+
+        function renderUsers() {
+            userListContainer.innerHTML = '';
+            users.forEach(user => {
+                const userElement = document.createElement('li');
+                userElement.textContent = user;
+                userListContainer.appendChild(userElement);
+            });
+        }
+
+        postButton.addEventListener('click', () => {
+            if (newPostTextarea.value.trim()) {
+                posts.unshift({
+                    id: posts.length + 1,
+                    user: 'NewUser',
+                    time: 'Just now',
+                    content: newPostTextarea.value.trim(),
+                    likes: 0,
+                    comments: []
+                });
+                newPostTextarea.value = '';
+                renderPosts();
+            }
         });
+
+        renderPosts();
+        renderUsers();
     </script>
 </body>
+
 </html>
+

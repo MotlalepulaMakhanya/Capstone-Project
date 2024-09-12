@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,23 +12,27 @@
             background-color: #f4f4f4;
             padding: 20px;
         }
+
         header {
             text-align: center;
             margin-bottom: 20px;
         }
+
         form {
             max-width: 600px;
             margin: auto;
             background: #fff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
         }
+
         input[type="text"],
         input[type="number"],
         select {
@@ -36,9 +41,11 @@
             margin-bottom: 15px;
             box-sizing: border-box;
         }
+
         input[type="radio"] {
             margin-right: 5px;
         }
+
         button {
             background-color: #219ebc;
             color: #fff;
@@ -48,70 +55,86 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
         button:hover {
             background-color: #0277bd;
         }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>Predict Dementia</h1>
+        <h1>Predict Dementia Risk</h1>
     </header>
 
     <form action="/public/prediction-results.html" method="post">
-        <label for="subject-id">Subject ID:</label>
-        <input type="text" id="subject-id" name="subject-id" required>
+        <!-- Prediction Form -->
+        <section id="predict" class="section">
+            <div class="form-container">
+                <h2>Dementia Risk Prediction</h2>
+                <form id="prediction-form">
+                    <!-- Subject ID -->
+                    <input type="text" id="subject-id" placeholder="Subject ID" required>
 
-        <label for="mri-id">MRI ID:</label>
-        <input type="text" id="mri-id" name="mri-id" required>
+                    <!-- MRI ID -->
+                    <input type="text" id="mri-id" placeholder="MRI ID" required>
 
-        <label for="group">Group:</label>
-        <select id="group" name="group" required>
-            
-            <option value="dementia">Demented</option>
-            <option value="non-demented">Non-Demented</option>
-            <option value="converted">Converted</option>
-        </select>
+                    <!-- Group (e.g., Control, Demented) -->
+                    <select id="group" required>
+                        <option value="" disabled selected>Select Group</option>
+                        <option value="Control">Control</option>
+                        <option value="Demented">Demented</option>
+                    </select>
 
-        <label for="visit">Visit:</label>
-        <input type="text" id="visit" name="visit" required>
+                    <!-- Visit Number -->
+                    <input type="number" id="visit-number" placeholder="Visit Number" min="1" required>
 
-        <label for="mr-delay">MR Delay:</label>
-        <input type="number" id="mr-delay" name="mr-delay" step="0.01" required>
+                    <!-- MR Delay (Numeric Input) -->
+                    <input type="number" id="mr-delay" placeholder="MR Delay" required>
 
-        <label for="sex">Sex:</label>
-        <select id="sex" name="sex" required>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select>
+                    <!-- M/F (Gender) -->
+                    <select id="gender" required>
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
 
-        <label for="hand">Handedness:</label>
-        <select id="hand" name="hand" required>
-            <option value="right">Right</option>
-            <option value="left">Left</option>
-            <option value="both">Both</option>
-        </select>
+                    <!-- Hand (Dominant Hand) -->
+                    <select id="hand" required>
+                        <option value="" disabled selected>Select Hand</option>
+                        <option value="R">Right</option>
+                        <option value="L">Left</option>
+                    </select>
 
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
+                    <!-- Age -->
+                    <input type="number" id="age" placeholder="Age" min="0" required>
 
-        <label for="educ">Education (years):</label>
-        <input type="number" id="educ" name="educ" required>
+                    <!-- EDUC (Education Level in Years) -->
+                    <input type="number" id="educ" placeholder="Education (Years)" min="0" required>
 
-        <label for="ses">Socioeconomic Status:</label>
-        <select id="ses" name="ses" required>
-            <option value="low">Low</option>
-            <option value="middle">Middle</option>
-            <option value="high">High</option>
-        </select>
+                    <!-- SES (Socioeconomic Status) -->
+                    <input type="number" id="ses" placeholder="Socioeconomic Status (SES)" min="1" max="5" required>
 
-        <label for="mmse">MMSE Score:</label>
-        <input type="number" id="mmse" name="mmse" step="0.1" required>
+                    <!-- MMSE (Mini-Mental State Examination Score) -->
+                    <input type="number" id="mmse" placeholder="MMSE Score" min="0" max="30" required>
 
-        <label for="cdr">CDR Score:</label>
-        <input type="number" id="cdr" name="cdr" step="0.1" required>
+                    <!-- CDR (Clinical Dementia Rating) -->
+                    <input type="number" id="cdr" placeholder="CDR Score" step="0.5" min="0" max="3" required>
 
-        <button type="submit">Submit</button>
-    </form>
+                    <!-- eTIV (Estimated Total Intracranial Volume) -->
+                    <input type="number" id="etiv" placeholder="eTIV (Estimated Total Intracranial Volume)" required>
+
+                    <!-- nWBV (Normalized Whole Brain Volume) -->
+                    <input type="number" id="nwbv" placeholder="nWBV (Normalized Whole Brain Volume)" step="0.01"
+                        required>
+
+                    <!-- ASF (Atlas Scaling Factor) -->
+                    <input type="number" id="asf" placeholder="ASF (Atlas Scaling Factor)" step="0.01" required>
+
+                    <button type="submit" class="btn">Predict</button>
+                </form>
+            </div>
+        </section>
 </body>
+
 </html>
