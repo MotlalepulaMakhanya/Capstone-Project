@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,28 +13,32 @@
             margin: 0;
             padding: 20px;
         }
+
         header {
             text-align: center;
             margin-bottom: 20px;
-            background-color: #fb8500;;
-            border-radius: 15px; 
+            background-color: #fb8500;
+            ;
+            border-radius: 15px;
         }
+
         header h1 {
             color: #03045E;
             font-size: 2.5em;
             margin: 0;
         }
-         
 
-    
+
+
         .game-container {
             max-width: 600px;
             margin: auto;
             padding: 20px;
             background: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .card {
             width: 100px;
             height: 100px;
@@ -48,16 +53,18 @@
             border-radius: 5px;
             user-select: none;
         }
+
         .card.flipped {
             background: #00B4D8;
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Memory Match Game</h1>
         <img src="/public/gameig.png" alt="game" style="width: 100px; height: auto;">
-        
+
     </header>
 
     <div class="game-container">
@@ -114,5 +121,9 @@
 
         cards.forEach(symbol => gameBoard.appendChild(createCard(symbol)));
     </script>
+    <footer>
+        <p><a href="/public/dashboard.html">Back to Dashboard</a></p>
+    </footer>
 </body>
+
 </html>
