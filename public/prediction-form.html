@@ -18,7 +18,7 @@
             margin-bottom: 20px;
         }
 
-        form {
+        .form-container {
             max-width: 600px;
             margin: auto;
             background: #fff;
@@ -46,17 +46,18 @@
             margin-right: 5px;
         }
 
-        button {
+        .button-link {
+            display: inline-block;
             background-color: #219ebc;
             color: #fff;
-            border: none;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
+            text-decoration: none;
         }
 
-        button:hover {
+        .button-link:hover {
             background-color: #0277bd;
         }
     </style>
@@ -67,77 +68,16 @@
         <h1>Predict Dementia Risk</h1>
     </header>
 
-    <form action="/public/prediction-results.html" method="post">
-        <!-- Prediction Form -->
-        <section id="predict" class="section">
-            <div class="form-container">
-                <h2>Dementia Risk Prediction</h2>
-                <form id="prediction-form">
-                    <!-- Subject ID -->
-                    <input type="text" id="subject-id" placeholder="Subject ID" required>
+    <div class="form-container">
+        <h2>Dementia Risk Prediction</h2>
+        <p>Click the button below to go to the prediction app:</p>
+        <!-- Button that redirects to Flask app -->
+        <a href="https://flask-api-dem-1.onrender.com" class="button-link">Go to Prediction App</a>
+    </div>
 
-                    <!-- MRI ID -->
-                    <input type="text" id="mri-id" placeholder="MRI ID" required>
-
-                    <!-- Group (e.g., Control, Demented) -->
-                    <select id="group" required>
-                        <option value="" disabled selected>Select Group</option>
-                        <option value="Control">Control</option>
-                        <option value="Demented">Demented</option>
-                    </select>
-
-                    <!-- Visit Number -->
-                    <input type="number" id="visit-number" placeholder="Visit Number" min="1" required>
-
-                    <!-- MR Delay (Numeric Input) -->
-                    <input type="number" id="mr-delay" placeholder="MR Delay" required>
-
-                    <!-- M/F (Gender) -->
-                    <select id="gender" required>
-                        <option value="" disabled selected>Select Gender</option>
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
-                    </select>
-
-                    <!-- Hand (Dominant Hand) -->
-                    <select id="hand" required>
-                        <option value="" disabled selected>Select Hand</option>
-                        <option value="R">Right</option>
-                        <option value="L">Left</option>
-                    </select>
-
-                    <!-- Age -->
-                    <input type="number" id="age" placeholder="Age" min="0" required>
-
-                    <!-- EDUC (Education Level in Years) -->
-                    <input type="number" id="educ" placeholder="Education (Years)" min="0" required>
-
-                    <!-- SES (Socioeconomic Status) -->
-                    <input type="number" id="ses" placeholder="Socioeconomic Status (SES)" min="1" max="5" required>
-
-                    <!-- MMSE (Mini-Mental State Examination Score) -->
-                    <input type="number" id="mmse" placeholder="MMSE Score" min="0" max="30" required>
-
-                    <!-- CDR (Clinical Dementia Rating) -->
-                    <input type="number" id="cdr" placeholder="CDR Score" step="0.5" min="0" max="3" required>
-
-                    <!-- eTIV (Estimated Total Intracranial Volume) -->
-                    <input type="number" id="etiv" placeholder="eTIV (Estimated Total Intracranial Volume)" required>
-
-                    <!-- nWBV (Normalized Whole Brain Volume) -->
-                    <input type="number" id="nwbv" placeholder="nWBV (Normalized Whole Brain Volume)" step="0.01"
-                        required>
-
-                    <!-- ASF (Atlas Scaling Factor) -->
-                    <input type="number" id="asf" placeholder="ASF (Atlas Scaling Factor)" step="0.01" required>
-
-                    <button type="submit" class="btn">Predict</button>
-                </form>
-            </div>
-        </section>
-        <footer>
-            <p><a href="/public/dashboard.html">Back to Dashboard</a></p>
-        </footer>
+    <footer>
+        <p><a href="/public/dashboard.html">Back to Dashboard</a></p>
+    </footer>
 </body>
 
 </html>
